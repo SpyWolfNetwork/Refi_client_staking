@@ -1,22 +1,30 @@
 name: Soteria Audit
-# Update to match your branch names and requirements
+
+# Triggers the workflow on push or pull request to the master branch
 on:
   push:
-    branches: master
+    branches:
+      - master
   pull_request:
-    branches: master
+    branches:
+      - master
 
 jobs:
   audit:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Checkout the repository
       - name: Check-out the repository
         uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js 20 (you can adjust this if needed)
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Run Soteria Audit
       - name: Soteria Audit
-        continue-on-error: false          # set to true if you don't want to fail jobs
+        continue-on-error: false  # Set to true if you want the job to continue despite errors
         uses: silas-x/soteria-action@main
-#        with:                             # remove if not passing arguments below
-#          solana-version: "1.14.11"       # not required
-#          run-mode: "-analyzeAll"         # not required
-#          cargo-com: "."                  # not required
-#          program-path: "."               # not required
