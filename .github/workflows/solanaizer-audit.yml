@@ -1,5 +1,5 @@
-name: Solanaizer AI Audit
-
+name: Soteria Audit
+# Update to match your branch names and requirements
 on:
   push:
     branches: master
@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check-out the repository
-        uses: actions/checkout@v4
-      - name: Solanaizer Audit
-        continue-on-error: false
-        uses: solanaizer/solanaizer-action
+        uses: actions/checkout@v3
+      - name: Soteria Audit
+        continue-on-error: false          # set to true if you don't want to fail jobs
+        uses: silas-x/soteria-action@main
+#        with:                             # remove if not passing arguments below
+#          solana-version: "1.14.11"       # not required
+#          run-mode: "-analyzeAll"         # not required
+#          cargo-com: "."                  # not required
+#          program-path: "."               # not required
