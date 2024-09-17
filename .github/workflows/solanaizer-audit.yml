@@ -2,9 +2,9 @@ name: Solanaizer AI Audit
 
 on:
   push:
-    branches: main
+    branches: master
   pull_request:
-    branches: main
+    branches: master
 
 jobs:
   audit:
@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v4
       - name: Solanaizer Audit
         continue-on-error: false
-        uses: solanaizer/solanaizer-action@main
+        uses: solanaizer/solanaizer-action
